@@ -5,8 +5,6 @@ import App from './app';
 const title = 'Multi-step Checkout Experience';
 
 ReactDOM.render(
-  <div>{title}</div>,
+  <App />,
   document.getElementById('app')
 );
-
-module.hot.accept();
