@@ -1,5 +1,6 @@
 var React = require('react');
 var Checkout = require('./Components/Checkout');
+var axios = require('axios');
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,15 @@ class App extends React.Component {
   }
 
   createNewRecord() {
-    console.log('clicked!')
+    axios.post('/customer', {})
+    .then((response) => {
+      console.log(response);
+      this.setState({customerId: response.data});
+      this.setState({currentPage: 'f1'});
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 
   render() {

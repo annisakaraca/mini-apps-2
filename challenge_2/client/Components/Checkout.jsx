@@ -2,7 +2,7 @@ var React = require('react');
 
 function Checkout(props){
   return (
-    <button onClick={() => this.props.clickHandler()}>Checkout</button>
+    <button onClick={() => props.clickHandler()}>Checkout</button>
   )
 }
 

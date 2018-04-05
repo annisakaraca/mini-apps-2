@@ -17,8 +17,12 @@ module.exports.connect = () => {
   });
 }
 
-module.exports.insertCustomer = (infoObj) => {
-
+module.exports.insertCustomer = (callback) => {
+  let document = {};
+  let collection = db.collection('customers');
+  collection.insert(document, function(err, docsInserted){
+    callback(err, document._id);
+  });
 };
 
 module.exports.updateCustomer = (customerId, infoObj) => {
