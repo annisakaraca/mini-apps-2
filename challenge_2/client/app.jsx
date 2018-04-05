@@ -11,14 +11,24 @@ class App extends React.Component {
       currentPage: 'homepage'
     }
     this.createNewRecord = this.createNewRecord.bind(this);  
+    this.updateRecord = this.updateRecord.bind(this);
   }
 
   createNewRecord() {
     axios.post('/customer', {})
     .then((response) => {
-      console.log(response);
       this.setState({customerId: response.data});
       this.setState({currentPage: 'f1'});
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
+  updateRecord(id, info, nextPage) {
+    axios.patch(`/customer/${id}`, info)
+    .then((response) => {
+      this.setState({currentPage: nextPage});
     })
     .catch((error) => {
       console.log(error);
@@ -29,7 +39,7 @@ class App extends React.Component {
     if (this.state.currentPage === 'homepage') {
       return <Checkout clickHandler={this.createNewRecord} />
     } else if (this.state.currentPage === 'f1') {
-      return <F1 />
+      return <F1 clickHandler={this.updateRecord} id={this.state.customerId}/>
     } else {
       return 'Hello';
     };

@@ -19,26 +19,32 @@ class F1 extends React.Component {
   }
 
   handleSubmit(event) {
-
+    let infoObj = {};
+    for (var val in this.state) {
+      infoObj[`${val}`] = this.state[val];
+    };
+    this.props.clickHandler(this.props.id, infoObj, 'f2');
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" id="name" value={this.state.name} onChange={this.handleChange} />
-        </label><br/>
-        <label>
-          Email:
-          <input type="text" id="email" value={this.state.email} onChange={this.handleChange} />
-        </label><br/>
-        <label>
-          Password:
-          <input type="password" id="password" value={this.state.password} onChange={this.handleChange} />
-        </label><br/>
-        <input type="submit" value="Next" />
-      </form>
+      <div>
+        <form>
+          <label>
+            Name:
+            <input type="text" id="name" value={this.state.name} onChange={this.handleChange} />
+          </label><br/>
+          <label>
+            Email:
+            <input type="text" id="email" value={this.state.email} onChange={this.handleChange} />
+          </label><br/>
+          <label>
+            Password:
+            <input type="password" id="password" value={this.state.password} onChange={this.handleChange} />
+          </label><br/>
+        </form>
+        <button onClick={()=>{this.handleSubmit()}}>Next</button>
+      </div>
     )
   }
 }

@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectID;
 const assert = require('assert');
 
 // Connection URL
@@ -12,7 +13,6 @@ module.exports.connect = () => {
   MongoClient.connect(url, function(err, client) {
     assert.equal(null, err);
     console.log('Connected successfully to MongoDB');
-
     db = client.db(dbName);
   });
 }
@@ -25,6 +25,9 @@ module.exports.insertCustomer = (callback) => {
   });
 };
 
-module.exports.updateCustomer = (customerId, infoObj) => {
-
+module.exports.updateCustomer = (customerId, infoObj, callback) => {
+  let collection = db.collection('customers');
+  collection.update({"_id": ObjectId(customerId)},  {$set: infoObj}, (err, info) => {
+    callback(err, info);
+  })
 }
