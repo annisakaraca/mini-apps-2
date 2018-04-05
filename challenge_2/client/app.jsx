@@ -1,6 +1,7 @@
 var React = require('react');
 var Checkout = require('./Components/Checkout');
 var F1 = require('./Components/F1');
+var F2 = require('./Components/F2');
 var axios = require('axios');
 
 class App extends React.Component {
@@ -40,6 +41,8 @@ class App extends React.Component {
       return <Checkout clickHandler={this.createNewRecord} />
     } else if (this.state.currentPage === 'f1') {
       return <F1 clickHandler={this.updateRecord} id={this.state.customerId}/>
+    } else if (this.state.currentPage === 'f2') {
+      return <F2 clickHandler={this.updateRecord} id={this.state.customerId}/>
     } else {
       return 'Hello';
     };
