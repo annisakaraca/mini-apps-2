@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
+var App = require('./app');
 
 const title = 'Multi-step Checkout Experience';
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import Checkout from './Components/Checkout';
+var React = require('react');
+var Checkout = require('./Components/Checkout');
 
 class App extends React.Component {
   constructor(props) {
@@ -8,10 +8,16 @@ class App extends React.Component {
       customerId: null,
       currentPage: 'homepage'
     }
+    this.createNewRecord = this.createNewRecord.bind(this);  
   }
+
+  createNewRecord() {
+    console.log('clicked!')
+  }
+
   render() {
     if (this.state.currentPage === 'homepage') {
-      return <Checkout />
+      return <Checkout clickHandler={this.createNewRecord} />
     } else {
       return 'Hello';
     };

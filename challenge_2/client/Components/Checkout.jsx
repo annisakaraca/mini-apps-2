@@ -1,8 +1,8 @@
-import React from 'react';
+var React = require('react');
 
-const Checkout = () => {
+function Checkout(props){
   return (
-    <button>Checkout</button>
+    <button onClick={() => this.props.clickHandler()}>Checkout</button>
   )
 }
 
