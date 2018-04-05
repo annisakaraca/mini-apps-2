@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
+    "db": "mongod",
     "build": "webpack --watch --config ./webpack.config.js"
   },
   "keywords": [],
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "express": "^4.16.3",
+    "mongodb": "^3.0.5",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"
   }
